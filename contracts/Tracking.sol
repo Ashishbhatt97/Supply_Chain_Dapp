@@ -36,7 +36,7 @@ contract Tracking {
 
     typeShipment[] typeShipments;
     event ShipmentCreated(
-        address indexed swender,
+        address indexed sender,
         address indexed receiver,
         uint256 pickupTime,
         uint256 deliveryTime,
@@ -45,18 +45,18 @@ contract Tracking {
     );
 
     event ShipmentInTransit(
-        address indexed swender,
+        address indexed sender,
         address indexed receiver,
         uint256 pickupTime
     );
     event ShipmentDelivered(
-        address indexed swender,
+        address indexed sender,
         address indexed receiver,
         uint256 deliveryTime
     );
 
     event ShipmentPaid(
-        address indexed swender,
+        address indexed sender,
         address indexed receiver,
         uint256 amount
     );
@@ -107,5 +107,24 @@ contract Tracking {
             _distance,
             _price
         );
+    }
+
+    function startShipment(
+        address _sender,
+        address _receiver,
+        uint256 _index
+    ) public {
+        Shipment storage shipment = shipments[_sender][_index];
+        typeShipment storage type_Shipment = typeShipments[_index];
+        require(shipment.reciever == _receiver, "Invalid Receiver");
+        require(
+            shipment.status == shipmentStatus.PENDING,
+            "Shipment is already in transit"
+        );
+
+        shipment.status = shipmentStatus.IN_TRANSIT;
+        type_Shipment.status = shipmentStatus.IN_TRANSIT;
+
+        emit ShipmentInTransit(_sender, _receiver, _pickupTime);
     }
 }
