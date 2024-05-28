@@ -1,4 +1,4 @@
-//SPDX-Identifier-Lincense:MIT
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.2;
 
 contract Tracking {
@@ -62,7 +62,7 @@ contract Tracking {
     );
 
     constructor() {
-        shipmentCounts = 0;
+        shipmentCount = 0;
     }
 
     function createShipment(
@@ -116,6 +116,7 @@ contract Tracking {
     ) public {
         Shipment storage shipment = shipments[_sender][_index];
         typeShipment storage type_Shipment = typeShipments[_index];
+
         require(shipment.reciever == _receiver, "Invalid Receiver");
         require(
             shipment.status == shipmentStatus.PENDING,
@@ -125,6 +126,36 @@ contract Tracking {
         shipment.status = shipmentStatus.IN_TRANSIT;
         type_Shipment.status = shipmentStatus.IN_TRANSIT;
 
-        emit ShipmentInTransit(_sender, _receiver, _pickupTime);
+        emit ShipmentInTransit(_sender, _receiver, shipment.pickupTime);
+    }
+
+    function completeShipment(
+        address _sender,
+        address _receiver,
+        uint256 _index
+    ) public {
+        Shipment storage shipment = shipments[_sender][_index];
+        typeShipment storage type_Shipment = typeShipments[_index];
+
+        require(shipment.reciever == _receiver, "Invalid receiver");
+        require(
+            shipment.status == shipmentStatus.IN_TRANSIT,
+            "Shipment is not in transit"
+        );
+
+        require(!shipment.isPaid, "Shipment already paid");
+
+        shipment.status = shipmentStatus.DELIVERED;
+        type_Shipment.status = shipmentStatus.DELIVERED;
+        type_Shipment.deliveryTime = block.timestamp;
+        shipment.deliveryTime = block.timestamp;
+
+        uint256 amount = shipment.price;
+        payable(shipment.sender).transfer(amount);
+        shipment.isPaid = true;
+        type_Shipment.isPaid = true;
+
+        emit ShipmentDelivered(_sender, _receiver, shipment.deliveryTime);
+        emit ShipmentPaid(_sender, _receiver, amount);
     }
 }
