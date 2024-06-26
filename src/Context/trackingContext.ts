@@ -57,7 +57,8 @@ export const TrackingProvider = ({ children }: any) => {
       const provider = new ethers.providers.JsonRpcProvider();
       const contract = fetchContract(provider);
       const shipments = await contract.getAllTransactions();
-      const allShipments = shipments.map((shipment) => ({
+
+      const allShipments = shipments.map((shipment: any) => ({
         sender: shipment.sender,
         receiver: shipment.receiver,
         price: ethers.utils.formatEther(shipment.price.toString()),
@@ -73,4 +74,26 @@ export const TrackingProvider = ({ children }: any) => {
       console.log("error", error);
     }
   };
+
+  // get Shipment Count function
+  const getShipmentCount = async () => {
+    try {
+      if (window.ethereum) return "Install Metamask";
+
+      const account = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+
+      const provider = new ethers.providers.JsonRpcProvider();
+      const contract = fetchContract(provider);
+      const shipmentCount = await contract.getShipmentCount(account[0]);
+      return shipmentCount.toNumber();
+    } catch (error) {
+      console.log("error want, getting shipment");
+    }
+  };
+
+
+
+  
 };
