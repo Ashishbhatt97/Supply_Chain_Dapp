@@ -93,6 +93,7 @@ export const TrackingProvider = ({ children }: any) => {
     }
   };
 
+  //Complete Shipment Function
   const completeShipment = async (completeShip: any) => {
     console.log(completeShip);
 
@@ -127,6 +128,38 @@ export const TrackingProvider = ({ children }: any) => {
       console.log(transaction);
     } catch (error) {
       console.log("something went wrong on completeShipment", error);
+    }
+  };
+
+  const getShipment = async (index: any) => {
+    console.log(index * 1);
+
+    try {
+      if (!window.ethereum) return "Install Metamask";
+
+      const accounts = await window.ethereum.request({
+        method: "eth_accounts",
+      });
+
+      const provider = new ethers.providers.JsonRpcProvider();
+      const contract = fetchContract(provider);
+      const shipment = await contract.getShipment(accounts[0], index * 1);
+      console.log(shipment);
+
+      const singleShipment = {
+        sender: shipment[0],
+        receiver: shipment[1],
+        pickupTime: shipment[2].toNumber(),
+        deliveryTime: shipment[3].toNumber(),
+        distance: shipment[4].toNumber(),
+        price: ethers.utils.formatEther(shipment[5].toString()),
+        status: shipment[6],
+        isPaid: shipment[7],
+      };
+
+      return singleShipment;
+    } catch (error) {
+      console.log("Sorry No Shipment");
     }
   };
 };
