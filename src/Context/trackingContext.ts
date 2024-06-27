@@ -162,4 +162,36 @@ export const TrackingProvider = ({ children }: any) => {
       console.log("Sorry No Shipment");
     }
   };
+
+  // Start Shipment Function
+  const startShipment = async (getProduct: any) => {
+    const { receiver, index } = getProduct;
+
+    try {
+      if (!window.ethereum) return "Install Metamask";
+
+      const accounts = await window.ethereum.request({
+        method: "eth_accounts",
+      });
+
+      const web3modal = new Web3Modal();
+      const connection = await web3modal.connect();
+      const provider = new ethers.providers.Web3Provider(connection);
+      const signer = provider.getSigner();
+      const contract = fetchContract(signer);
+
+      const shipment = await contract.startShipment(
+        accounts[0],
+        receiver,
+        index * 1
+      );
+
+      shipment.wait();
+      console.log(shipment);
+    } catch (error) {
+      console.log("sorry no Shipment", error);
+    }
+  };
 };
+
+
