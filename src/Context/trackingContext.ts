@@ -93,7 +93,40 @@ export const TrackingProvider = ({ children }: any) => {
     }
   };
 
+  const completeShipment = async (completeShip: any) => {
+    console.log(completeShip);
 
+    const { receiver, index } = completeShip;
 
-  
+    try {
+      if (!window.ethereum) return "install Metamask";
+
+      const accounts = await window.ethereum.request({
+        method: "eth_accounts",
+      });
+
+      const web3modal = new Web3Modal();
+      const connection = await web3modal.connect();
+      const provider = new ethers.providers.Web3Provider(connection);
+
+      const signer = provider.getSigner();
+
+      const contract = fetchContract(signer);
+
+      const transaction = await contract.completeShipment(
+        accounts[0],
+        receiver,
+        index,
+        {
+          gasLimit: 300000,
+        }
+      );
+
+      transaction.wait();
+
+      console.log(transaction);
+    } catch (error) {
+      console.log("something went wrong on completeShipment", error);
+    }
+  };
 };
