@@ -1,7 +1,9 @@
+"use client"
 import React, { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import tracking from "./Tracking.json";
-import Web3Modal from "@web3modal/react";
+import { Web3Modal } from "web3modal";
+
 
 const ContractAddress = "YOUR_CONTRACT_ADDRESS";
 const ContractABI = tracking.abi;
@@ -127,7 +129,6 @@ export const TrackingProvider = ({ children }) => {
   // Get a single shipment
   const getShipment = async (index) => {
     console.log(index);
-
     try {
       if (!window.ethereum) return "Install Metamask";
 
