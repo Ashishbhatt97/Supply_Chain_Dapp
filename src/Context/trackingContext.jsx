@@ -1,9 +1,8 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import tracking from "./Tracking.json";
 import { Web3Modal } from "web3modal";
-
 
 const ContractAddress = "YOUR_CONTRACT_ADDRESS";
 const ContractABI = tracking.abi;
@@ -209,9 +208,11 @@ export const TrackingProvider = ({ children }) => {
   // Connect wallet
   const connectWallet = async () => {
     try {
-      if (!window.ethereum) return "Install Metamask";
+      const { ethereum } = window;
 
-      const accounts = await window.ethereum.request({
+      if (!ethereum) return "Install Metamask";
+
+      const accounts = await ethereum.request({
         method: "eth_requestAccounts",
       });
 

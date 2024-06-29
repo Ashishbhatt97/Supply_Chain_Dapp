@@ -1,9 +1,8 @@
-import React from 'react'
+import { TrackingContext } from "@/Context/trackingContext";
+import React, { useContext } from "react";
 
 const Profile = () => {
-  return (
-    <div>Profile</div>
-  )
-}
+  return <div>Profile</div>;
+};
 
-export default Profile
+export default Profile;
