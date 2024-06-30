@@ -70,10 +70,19 @@ const Navbar = ({
           })}
         <button
           onClick={() => connectWallet()}
-          className="1024:px-6 1024:py-3 px-4 py-2 700:text-[12px] text-[10px] bg-gray-200 font-semibold text-black rounded-lg active:scale-95 600:flex 900:text-sm items-center"
+          className="1024:px-6 1024:py-3 px-4 py-2 700:text-[12px] text-[10px] max-w-[200px] bg-gray-200 font-semibold text-black rounded-lg active:scale-95 600:flex 900:text-sm items-center overflow-hidden pr-8 truncate whitespace-nowrap"
         >
-          Connect Wallet
-          <ChevronRight size={20} />
+          {currentUser ? (
+            <p className="justify-end flex items-center">
+              {currentUser.slice(0, 13)}..
+            </p>
+          ) : (
+            `Connect Wallet`
+          )}
+          <ChevronRight
+            className={currentUser ? `hidden` : "block"}
+            size={20}
+          />
         </button>
       </div>
 
@@ -120,7 +129,7 @@ const Navbar = ({
             onClick={() => connectWallet()}
             className="w-1/2 px-4 py-2 bg-gray-200 font-semibold gap-1 text-black rounded-lg 600:flex 900:text-sm flex justify-center items-center"
           >
-            Connect Wallet
+            {currentUser ? currentUser : "Connect Wallet"}
             <ChevronRight size={20} />
           </button>
         </div>
