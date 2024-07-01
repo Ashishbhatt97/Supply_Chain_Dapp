@@ -6,6 +6,8 @@ const Services = ({
   setGetModal,
   setStartModal,
 }: any) => {
+
+  
   const team = [
     "COMP SHIPMENT",
     "GET SHIPMENT",
