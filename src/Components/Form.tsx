@@ -1,9 +1,10 @@
 "use client";
+import { X } from "lucide-react";
 import React, { useState } from "react";
 
 const Form = ({
   setCreateShipmentModal,
-  createShipmentModel,
+  createShipmentModal,
   createShipment,
 }: any) => {
   const [shipment, setShipment] = useState({
@@ -21,21 +22,21 @@ const Form = ({
     }
   };
 
-  return createShipmentModel ? (
+  return createShipmentModal ? (
     <div className="fixed inset-0 z-10 overflow-y-auto ">
       <div
-        className="fixed inset-0 w-full h-full bg-black opacity-40"
+        className="fixed inset-0 w-full h-full bg-black opacity-90"
         onClick={() => setCreateShipmentModal(false)}
       ></div>
 
       <div className="flex items-center min-h-screen px-4 py-8">
-        <div className="relative w-full max-w-lg p-4 mx-auto bg-white rounded-md shadow-lg">
+        <div className="relative w-full max-w-lg p-4 mx-auto bg-black rounded-md shadow-lg">
           <div className="flex justify-end">
             <button
-              className="p-2 text-gray-500 rounded-md hover:bg-gray-100"
+              className="p-2 text-gray-500 rounded-md hover:bg-gray-700"
               onClick={() => setCreateShipmentModal(false)}
             >
-              buu
+              <X color="white" />
             </button>
           </div>
 
@@ -44,17 +45,20 @@ const Form = ({
               Track Shipment, Create Shipment
             </h4>
           </div>
-          <p className="text-[15px] text-gray-200">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam,
-            reiciendis!
+          <p className="text-[15px] px-6 text-gray-200">
+            Efficiently Manage and Monitor Shipments for Seamless Product
+            Tracking
           </p>
 
-          <form onSubmit={(e) => e.preventDefault()}>
+          <form
+            onSubmit={(e) => e.preventDefault()}
+            className="flex flex-col  gap-3"
+          >
             <div className="relative mt-3">
               <input
                 type="text"
-                placeholder="receiver"
-                className="w-full pl-5 pr-3 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                placeholder="Receiver"
+                className="w-full pl-5 pr-3 h-9 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                 onChange={(e) =>
                   setShipment({
                     ...shipment,
@@ -67,7 +71,7 @@ const Form = ({
               <input
                 type="date"
                 placeholder="pickupTime"
-                className="w-full pl-5 pr-3 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                className="w-full pl-5 pr-3 h-9 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                 onChange={(e) =>
                   setShipment({
                     ...shipment,
@@ -80,7 +84,7 @@ const Form = ({
               <input
                 type="number"
                 placeholder="distance"
-                className="w-full pl-5 pr-3 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                className="w-full pl-5 pr-3 h-9 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                 onChange={(e) =>
                   setShipment({
                     ...shipment,
@@ -93,7 +97,7 @@ const Form = ({
               <input
                 type="number"
                 placeholder="price"
-                className="w-full pl-5 pr-3 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                className="w-full pl-5 pr-3 h-9 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                 onChange={(e) =>
                   setShipment({
                     ...shipment,
@@ -102,6 +106,14 @@ const Form = ({
                 }
               />
             </div>
+
+            <button
+              onClick={() => createItem()}
+              className="block w-full mt-3
+               py-3 px-4 font-medium text-sm text-center text-white bg-gray-800 rounded-lg hover:bg-gray-600 "
+            >
+              Create Shipment
+            </button>
           </form>
         </div>
       </div>

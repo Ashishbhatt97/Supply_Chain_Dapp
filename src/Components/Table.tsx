@@ -1,6 +1,6 @@
 import React from "react";
 
-const Table = ({ setCreateShipment, allShipmentData }: any) => {
+const Table = ({ setCreateShipmentModal, allShipmentData }: any) => {
   const convertTime = (time: number) => {
     const newTime = new Date().getTime();
 
@@ -30,7 +30,7 @@ const Table = ({ setCreateShipment, allShipmentData }: any) => {
 
         <div className="mt-3 md:mt-0">
           <button
-            onClick={() => setCreateShipment(true)}
+            onClick={() => setCreateShipmentModal(true)}
             className="inline-block px-4 py-2 text-white duration-150 font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-lg md:inline-flex"
           >
             Add Tracking
