@@ -1,6 +1,7 @@
 "use client";
 import { X } from "lucide-react";
 import React, { useState } from "react";
+import date from "../../public/date.svg";
 
 const Form = ({
   setCreateShipmentModal,
@@ -40,12 +41,12 @@ const Form = ({
             </button>
           </div>
 
-          <div className="max-w-sm mx-auto py-3 space-y-3 text-center">
-            <h4 className="text-lg font-medium text-gray-600">
+          <div className="max-w-sm pl-6 py-1 space-y-3">
+            <h4 className="text-xl font-medium text-gray-300">
               Track Shipment, Create Shipment
             </h4>
           </div>
-          <p className="text-[15px] px-6 text-gray-200">
+          <p className="text-[12px] px-6 pb-3 text-gray-600">
             Efficiently Manage and Monitor Shipments for Seamless Product
             Tracking
           </p>
@@ -54,7 +55,7 @@ const Form = ({
             onSubmit={(e) => e.preventDefault()}
             className="flex flex-col  gap-3"
           >
-            <div className="relative mt-3">
+            <div className="relative mt-3 px-6">
               <input
                 type="text"
                 placeholder="Receiver"
@@ -67,11 +68,11 @@ const Form = ({
                 }
               />
             </div>
-            <div className="relative mt-3">
+            <div className="relative mt-3 px-6">
               <input
                 type="date"
                 placeholder="pickupTime"
-                className="w-full pl-5 pr-3 h-9 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                className="w-full pl-5 pr-3 h-9 text-gray-500 bg-black placeholder:bg-white outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                 onChange={(e) =>
                   setShipment({
                     ...shipment,
@@ -80,7 +81,7 @@ const Form = ({
                 }
               />
             </div>
-            <div className="relative mt-3">
+            <div className="relative mt-3 px-6">
               <input
                 type="number"
                 placeholder="distance"
@@ -93,7 +94,7 @@ const Form = ({
                 }
               />
             </div>
-            <div className="relative mt-3">
+            <div className="relative mt-3 px-6">
               <input
                 type="number"
                 placeholder="price"
@@ -106,14 +107,15 @@ const Form = ({
                 }
               />
             </div>
-
-            <button
-              onClick={() => createItem()}
-              className="block w-full mt-3
-               py-3 px-4 font-medium text-sm text-center text-white bg-gray-800 rounded-lg hover:bg-gray-600 "
-            >
-              Create Shipment
-            </button>
+            <div className="px-6">
+              <button
+                onClick={() => createItem()}
+                className="block w-full mt-3
+              py-3 font-medium text-sm text-center text-white bg-gray-800 rounded-lg hover:bg-gray-600 "
+              >
+                Create Shipment
+              </button>
+            </div>
           </form>
         </div>
       </div>
