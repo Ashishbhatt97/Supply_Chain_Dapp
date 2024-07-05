@@ -57,7 +57,7 @@ const GetShipment = ({ getModal, setGetModal, getShipment }: any) => {
             </div>
 
             <div className="max-w-sm mx-auto py-3 space-y-3 text-center">
-              <h2 className="text-2xl font-medium text-gray-300">
+              <h2 className="text-3xl font-bold text-gray-100">
                 Product Tracking Details
               </h2>
 
