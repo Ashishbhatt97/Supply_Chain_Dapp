@@ -10,7 +10,7 @@ contract Tracking {
 
     struct Shipment {
         address sender;
-        address reciever;
+        address receiver;
         uint256 pickupTime;
         uint256 deliveryTime;
         shipmentStatus status;
@@ -25,7 +25,7 @@ contract Tracking {
 
     struct typeShipment {
         address sender;
-        address reciever;
+        address receiver;
         uint256 pickupTime;
         uint256 deliveryTime;
         shipmentStatus status;
@@ -117,7 +117,7 @@ contract Tracking {
         Shipment storage shipment = shipments[_sender][_index];
         typeShipment storage type_Shipment = typeShipments[_index];
 
-        require(shipment.reciever == _receiver, "Invalid Receiver");
+        require(shipment.receiver == _receiver, "Invalid Receiver");
         require(
             shipment.status == shipmentStatus.PENDING,
             "Shipment is already in transit"
@@ -137,7 +137,7 @@ contract Tracking {
         Shipment storage shipment = shipments[_sender][_index];
         typeShipment storage type_Shipment = typeShipments[_index];
 
-        require(shipment.reciever == _receiver, "Invalid receiver");
+        require(shipment.receiver == _receiver, "Invalid receiver");
         require(
             shipment.status == shipmentStatus.IN_TRANSIT,
             "Shipment is not in transit"
@@ -179,7 +179,7 @@ contract Tracking {
         Shipment memory shipment = shipments[_sender][_index];
         return (
             shipment.sender,
-            shipment.reciever,
+            shipment.receiver,
             shipment.pickupTime,
             shipment.deliveryTime,
             shipment.distance,

@@ -9,6 +9,7 @@ const StartShipment = ({ startModal, setStartModal, startShipment }: any) => {
 
   const startShipping = () => {
     startShipment(getProduct);
+    console.log(getProduct);
   };
   return startModal ? (
     <div className="fixed inset-0 z-10 overflow-y-auto">
@@ -29,9 +30,7 @@ const StartShipment = ({ startModal, setStartModal, startShipment }: any) => {
           </div>
 
           <div className="max-w-sm mx-auto py-3 space-y-3 text-center">
-            <h4 className="text-3xl font-bold text-gray-100">
-              Start the shipping
-            </h4>
+            <h4 className="text-3xl font-bold text-gray-100">Start shipping</h4>
 
             <form
               onSubmit={(e) => e.preventDefault()}
@@ -70,7 +69,7 @@ const StartShipment = ({ startModal, setStartModal, startShipment }: any) => {
                 className="block w-full mt-3
               py-3 font-medium text-sm text-center text-white bg-gray-800 rounded-lg hover:bg-gray-600 "
               >
-                Get details
+                Start Shipment
               </button>
             </form>
           </div>

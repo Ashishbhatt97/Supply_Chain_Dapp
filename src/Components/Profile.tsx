@@ -10,15 +10,18 @@ const Profile = ({
   const [count, setCount] = React.useState<number>(0);
 
   React.useEffect(() => {
-    const getShipment = () => {
-      const getShipmentsData = getShipmentCount();
-
-      return async () => {
-        const allData = await getShipmentsData();
-        setCount(allData);
-      };
+    const fetchShipmentCount = async () => {
+      try {
+        const countData = await getShipmentCount();
+        setCount(countData);
+      } catch (error) {
+        console.error("Failed to fetch shipment count:", error);
+      }
     };
-  }, []);
+
+    fetchShipmentCount();
+  }, [getShipmentCount]);
+
   return openProfile ? (
     <div className="fixed inset-0 z-10 overflow-y-auto">
       <div
@@ -44,19 +47,13 @@ const Profile = ({
               </h2>
               <span className="text-sm text-gray-200">{currentUser}</span>
               <div className="flex mt-4 space-x-3 md:mt-6">
-                <a
-                  href="#"
-                  className="items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg border-2"
-                >
+                <h2 className="items-center cursor-pointer px-4 py-2 text-sm font-medium text-center text-white rounded-lg border-2">
                   Balance: 34 ETH
-                </a>
+                </h2>
 
-                <a
-                  href="#"
-                  className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg border-2"
-                >
+                <h2 className="inline-flex cursor-pointer items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg border-2">
                   Total Shipment : {count}
-                </a>
+                </h2>
               </div>
             </div>
           </div>

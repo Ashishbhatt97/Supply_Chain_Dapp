@@ -1,6 +1,25 @@
 import React from "react";
 
-const Table = ({ setCreateShipmentModal, allShipmentData }: any) => {
+interface allShipmentDataFormat {
+  sender: string;
+  receiver: string;
+  price: string;
+  pickupTime: number;
+  deliveryTime: number;
+  distance: number;
+  isPaid: boolean;
+  status: number;
+}
+
+interface TableProps {
+  setCreateShipmentModal: (value: boolean) => void;
+  allShipmentData: allShipmentDataFormat[];
+}
+
+const Table: React.FC<TableProps> = ({
+  setCreateShipmentModal,
+  allShipmentData,
+}) => {
   const convertTime = (time: number) => {
     const newTime = new Date().getTime();
 
@@ -39,10 +58,11 @@ const Table = ({ setCreateShipmentModal, allShipmentData }: any) => {
       </div>
 
       {allShipmentData && (
-        <div className="mt-12  shadow-sm rounded-lg overflow-x-auto">
-          <table className="w-full table-auto text-sm text-left">
-            <thead className=" bg-gray-900 text-white font-medium">
+        <div className="mt-12  shadow-sm rounded-lg overflow-x-auto border-b border-x border-gray-700">
+          <table className="w-full table-auto text-[12px] text-left">
+            <thead className=" bg-gray-900 text-white">
               <tr>
+                <th className="py-3 px-6">Shipment Id</th>
                 <th className="py-3 px-6">Sender</th>
                 <th className="py-3 px-6">Receiver</th>
                 <th className="py-3 px-6">PickUp Time</th>
@@ -54,38 +74,41 @@ const Table = ({ setCreateShipmentModal, allShipmentData }: any) => {
               </tr>
             </thead>
 
-            <tbody className="text-gray-600 divide-y">
-              {allShipmentData?.map((shipment: any, index: number) => {
-                <tr key={index}>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    {shipment.sender.slice(0, 10)}...
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    {shipment.receiver.slice(0, 10)}...
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    {convertTime(shipment.PickUpTime)}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    {shipment.distance} KM
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    {shipment.price}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    {shipment.deliveryTime}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    {shipment.isPaid ? "Completed" : "Not Complete"}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    {shipment.status === 0
-                      ? "Pending"
-                      : shipment.status === 1
-                      ? "In Transit"
-                      : "Delivered"}
-                  </td>
-                </tr>;
+            <tbody className="text-gray-200 divide-y">
+              {allShipmentData?.map((shipment, index) => {
+                return (
+                  <tr key={index}>
+                    <td className="px-6 py-4 whitespace-nowrap">{index}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {shipment.sender?.slice(0, 10)}...
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {shipment.receiver?.slice(0, 10)}...
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {convertTime(shipment.pickupTime)}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {shipment.distance} KM
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {shipment.price}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {shipment.deliveryTime}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {shipment.isPaid ? "Completed" : "Not Complete"}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {shipment.status === 0
+                        ? "Pending"
+                        : shipment.status === 1
+                        ? "In Transit"
+                        : "Delivered"}
+                    </td>
+                  </tr>
+                );
               })}
             </tbody>
           </table>

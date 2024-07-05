@@ -15,7 +15,7 @@ interface singleShipmentData {
 }
 
 const GetShipment = ({ getModal, setGetModal, getShipment }: any) => {
-  const [index, setIndex] = React.useState<number>(0);
+  const [index, setIndex] = React.useState<number>();
   const [singleShipmentData, setSingleShipmentData] =
     React.useState<singleShipmentData>();
 
@@ -24,8 +24,6 @@ const GetShipment = ({ getModal, setGetModal, getShipment }: any) => {
     setSingleShipmentData(getData);
     console.log(getData);
   };
-
-  console.log(singleShipmentData);
 
   const convertTime = (time: number) => {
     const newTime = new Date(time);
@@ -50,7 +48,10 @@ const GetShipment = ({ getModal, setGetModal, getShipment }: any) => {
             <div className="flex justify-end">
               <button
                 className="p-2 text-gray-400 rounded-md hover:bg-gray-800"
-                onClick={() => setGetModal(false)}
+                onClick={() => {
+                  setGetModal(false);
+                  setSingleShipmentData(undefined);
+                }}
               >
                 <X className="text-white" />
               </button>
@@ -78,7 +79,7 @@ const GetShipment = ({ getModal, setGetModal, getShipment }: any) => {
                   className="block w-full mt-3
                py-3 px-4 font-medium text-sm text-center text-white bg-gray-800 rounded-lg hover:bg-gray-600 "
                 >
-                  Start Shipping
+                  Get Details
                 </button>
               </form>
 
@@ -96,10 +97,10 @@ const GetShipment = ({ getModal, setGetModal, getShipment }: any) => {
                       Delivery Time :
                       {convertTime(singleShipmentData.deliveryTime)}
                     </p>
-                    <p>Distance :{singleShipmentData.distance}</p>
+                    <p>Distance : {singleShipmentData.distance}</p>
 
-                    <p>Price :{singleShipmentData.price}</p>
-                    <p>Status :{singleShipmentData.status}</p>
+                    <p>Price : {singleShipmentData.price}</p>
+                    <p>Status : {singleShipmentData.status}</p>
                     <p>
                       Paid :
                       {singleShipmentData.isPaid ? "Complete" : "Not Complete"}
