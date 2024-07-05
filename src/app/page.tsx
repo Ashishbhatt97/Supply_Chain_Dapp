@@ -2,6 +2,7 @@
 import * as React from "react";
 import * as components from "@/Components";
 import { TrackingContext } from "@/Context/trackingContext";
+import LandingPage from "@/Components/LandingPage";
 
 export default function Home() {
   const {
@@ -24,6 +25,12 @@ export default function Home() {
   // data state variable
   const [allShipmentData, setAllShipmentData] = React.useState<any>();
 
+  //Smooth Scroll References
+  const ContactRef = React.useRef(null);
+  const PricingRef = React.useRef(null);
+  const ServicesRef = React.useRef(null);
+  const HomeRef = React.useRef(null);
+
   React.useEffect(() => {
     const fetchData = async () => {
       try {
@@ -39,7 +46,14 @@ export default function Home() {
 
   return (
     <main>
+      <LandingPage
+        PricingRef={PricingRef}
+        ContactRef={ContactRef}
+        HomeRef={HomeRef}
+      />
+
       <components.Services
+        ServicesRef={ServicesRef}
         setOpenProfile={setOpenProfile}
         setCompleteModal={setCompleteModal}
         setGetModal={setGetModal}

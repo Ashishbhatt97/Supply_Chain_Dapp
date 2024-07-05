@@ -7,12 +7,7 @@ import { useContext, useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { TrackingContext } from "@/Context/trackingContext";
 
-const Navbar = ({
-  projectReference,
-  skillsRef,
-  workRef,
-  educationRef,
-}: any) => {
+const Navbar = ({ ContactRef, ServicesRef, PricingRef }: any) => {
   const router = useRouter();
   const currentPathname = usePathname();
   const [pathname, setPathname] = useState("");
@@ -24,16 +19,16 @@ const Navbar = ({
     setPathname(currentPathname);
   }, [currentPathname]);
 
+  console.log(ContactRef, ServicesRef, PricingRef);
+
   const scrollToSection = (href: string) => {
     if (href.startsWith("#")) {
-      if (href.match("#Skills")) {
-        skillsRef.current.scrollIntoView({ behavior: "smooth" });
-      } else if (href.match("#projects")) {
-        projectReference.current.scrollIntoView({ behavior: "smooth" });
-      } else if (href.match("#work")) {
-        workRef.current.scrollIntoView({ behavior: "smooth" });
-      } else if (href.match("#education")) {
-        educationRef.current.scrollIntoView({ behavior: "smooth" });
+      if (href.match("#Services")) {
+        ServicesRef?.current?.scrollIntoView({ behavior: "smooth" });
+      } else if (href.match("#Contact")) {
+        ContactRef?.current?.scrollIntoView({ behavior: "smooth" });
+      } else if (href.match("#Pricing")) {
+        PricingRef?.current?.scrollIntoView({ behavior: "smooth" });
       }
     } else {
       router.push(href);
@@ -99,7 +94,7 @@ const Navbar = ({
           </div>
         )}
       </div>
-      <div className="border border-[#333333] w-[95%] mx-8"></div>
+      <div className="border border-[#d8d8d8] w-[95%] mx-8"></div>
 
       {sideNav ? (
         <div className="w-full h-[90vh] bg-black/75 backdrop-blur-2xl absolute z-50 flex gap-8 justify-center flex-col text-center items-center ">

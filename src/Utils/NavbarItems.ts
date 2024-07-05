@@ -5,15 +5,15 @@ export const NavBarItem = [
   },
   {
     navName: "Services",
-    href: "#",
+    href: "#Services",
   },
   {
     navName: "Contact Us",
-    href: "#",
+    href: "#Contact",
   },
   {
-    navName: "ERC20",
-    href: "#",
+    navName: "Pricing",
+    href: "#Pricing",
   },
 ];
 
@@ -24,14 +24,14 @@ export const AboutMobileNavBarItems = [
   },
   {
     navName: "Services",
-    href: "#",
+    href: "#Services",
   },
   {
     navName: "Contact Us",
-    href: "#",
+    href: "#Contact",
   },
   {
-    navName: "ERC20",
-    href: "#",
+    navName: "Pricing",
+    href: "#Pricing",
   },
 ];

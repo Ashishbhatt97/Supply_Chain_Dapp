@@ -4,14 +4,13 @@ const Services = ({
   setCompleteModal,
   setGetModal,
   setStartModal,
+  ServicesRef,
 }: any) => {
   const team = [
-    "COMP SHIPMENT",
     "GET SHIPMENT",
     "START SHIPMENT",
     "USER PROFILE",
-    "SHIPMENTS COUNT",
-    "SEND SHIPMENT",
+    "COMPLETE SHIPMENT",
   ];
 
   const openModalBox = (text: number) => {
@@ -28,10 +27,13 @@ const Services = ({
 
   return (
     <>
-      <section className="pb-14">
+      <section ref={ServicesRef} className="pb-14">
         <div className="max-w-screen-xl mx-auto px-6 md:px-10 1024:px-20">
-          <div className="mt-12 ">
-            <ul className="grid gap-8 500:grid-cols-2 700:grid-cols-3">
+          <div className="mt-6">
+            <h3 className="py-6 text-center font-bold text-4xl">
+              Services we offer
+            </h3>
+            <ul className="grid gap-8 500:grid-cols-2 700:grid-cols-4 ">
               {team.map((item, i) => {
                 return (
                   <li key={i}>
@@ -39,7 +41,7 @@ const Services = ({
                       onClick={() => openModalBox(i + 1)}
                       className="w-full h-60 500:h-52 700:h-56 cursor-pointer"
                     >
-                      <div className="w-full h-full bg-gray-900 text-white p-3 flex items-center justify-center font-bold text-2xl text-center">
+                      <div className="w-full h-full rounded-lg bg-gray-900 text-white p-3 flex items-center justify-center font-bold text-2xl text-center shadow-xl">
                         {item}
                       </div>
                     </div>

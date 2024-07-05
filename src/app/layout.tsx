@@ -28,10 +28,7 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <TrackingProvider>
-          <NavBar />
-          {children}
-        </TrackingProvider>
+        <TrackingProvider>{children}</TrackingProvider>
         <Footer />
       </body>
     </html>
