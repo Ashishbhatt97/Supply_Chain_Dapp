@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@walletconnect/web3wallet": "^1.12.3",
     "@web3modal/ethers": "^4.2.2",
     "dotenv": "^16.4.5",
     "ethers": "^5.7.2",

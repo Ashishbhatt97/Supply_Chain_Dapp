@@ -4,12 +4,12 @@ import { ethers } from "ethers";
 import tracking from "./Tracking.json";
 import { Web3Modal } from "web3modal";
 
-const ContractAddress = "YOUR_CONTRACT_ADDRESS";
-const ContractABI = tracking.abi;
+const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+const contractABI = tracking.abi;
 
 // Fetching the contract
 const fetchContract = (signerOrProvider) => {
-  return new ethers.Contract(ContractAddress, ContractABI, signerOrProvider);
+  return new ethers.Contract(contractAddress, contractABI, signerOrProvider);
 };
 
 export const TrackingContext = React.createContext(null);
@@ -25,11 +25,18 @@ export const TrackingProvider = ({ children }) => {
     const { receiver, pickupTime, distance, price } = items;
 
     try {
-      const web3modal = new Web3Modal();
-      const connection = await web3modal.connect();
-      const provider = new ethers.providers.Web3Provider(connection);
-      const signer = provider.getSigner();
+      const { ethereum } = window;
+
+      if (!ethereum) {
+        alert("Please install MetaMask!");
+        return;
+      }
+
+      const provider = new ethers.BrowserProvider(ethereum);
+      const signer = await provider.getSigner();
       const contract = fetchContract(signer);
+
+      console.log(contract);
 
       const createItem = await contract.createShipment(
         receiver,
