@@ -32,8 +32,8 @@ export const TrackingProvider = ({ children }) => {
         return;
       }
 
-      const provider = new ethers.BrowserProvider(ethereum);
-      const signer = await provider.getSigner();
+      const provider = new ethers.providers.Web3Provider(ethereum);
+      const signer = provider.getSigner();
       const contract = fetchContract(signer);
 
       console.log(contract);
@@ -104,15 +104,18 @@ export const TrackingProvider = ({ children }) => {
     const { receiver, index } = completeShip;
 
     try {
-      if (!window.ethereum) return "Install Metamask";
+      const { ethereum } = window;
+
+      if (!ethereum) {
+        alert("Please install MetaMask!");
+        return;
+      }
 
       const accounts = await window.ethereum.request({
-        method: "eth_accounts",
+        method: "eth_requestAccounts",
       });
 
-      const web3modal = new Web3Modal();
-      const connection = await web3modal.connect();
-      const provider = new ethers.providers.Web3Provider(connection);
+      const provider = new ethers.providers.Web3Provider(ethereum);
       const signer = provider.getSigner();
       const contract = fetchContract(signer);
 
@@ -135,11 +138,17 @@ export const TrackingProvider = ({ children }) => {
   // Get a single shipment
   const getShipment = async (index) => {
     console.log(index);
+
     try {
-      if (!window.ethereum) return "Install Metamask";
+      const { ethereum } = window;
+
+      if (!ethereum) {
+        alert("Please install MetaMask!");
+        return;
+      }
 
       const accounts = await window.ethereum.request({
-        method: "eth_accounts",
+        method: "eth_requestAccounts",
       });
 
       const provider = new ethers.providers.JsonRpcProvider();
@@ -168,15 +177,18 @@ export const TrackingProvider = ({ children }) => {
     const { receiver, index } = getProduct;
 
     try {
-      if (!window.ethereum) return "Install Metamask";
+      const { ethereum } = window;
+
+      if (!ethereum) {
+        alert("Please install MetaMask!");
+        return;
+      }
 
       const accounts = await window.ethereum.request({
-        method: "eth_accounts",
+        method: "eth_requestAccounts",
       });
 
-      const web3modal = new Web3Modal();
-      const connection = await web3modal.connect();
-      const provider = new ethers.providers.Web3Provider(connection);
+      const provider = new ethers.providers.Web3Provider(ethereum);
       const signer = provider.getSigner();
       const contract = fetchContract(signer);
 
@@ -196,10 +208,15 @@ export const TrackingProvider = ({ children }) => {
   // Check if wallet is connected
   const checkIfWalletConnected = async () => {
     try {
-      if (!window.ethereum) return "Install Metamask";
+      const { ethereum } = window;
+
+      if (!ethereum) {
+        alert("Please install MetaMask!");
+        return;
+      }
 
       const accounts = await window.ethereum.request({
-        method: "eth_accounts",
+        method: "eth_requestAccounts",
       });
 
       if (accounts.length) {
