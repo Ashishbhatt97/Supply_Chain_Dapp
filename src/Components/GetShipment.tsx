@@ -49,10 +49,10 @@ const GetShipment = ({ getModal, setGetModal, getShipment }: any) => {
           <div className="relative w-full max-w-lg p-4 mx-auto bg-black rounded-md shadow-lg">
             <div className="flex justify-end">
               <button
-                className="p-2 text-gray-400 rounded-md hover:bg-gray-100"
+                className="p-2 text-gray-400 rounded-md hover:bg-gray-800"
                 onClick={() => setGetModal(false)}
               >
-                <X />
+                <X className="text-white" />
               </button>
             </div>
 
@@ -78,7 +78,7 @@ const GetShipment = ({ getModal, setGetModal, getShipment }: any) => {
                   className="block w-full mt-3
                py-3 px-4 font-medium text-sm text-center text-white bg-gray-800 rounded-lg hover:bg-gray-600 "
                 >
-                  Get Details
+                  Start Shipping
                 </button>
               </form>
 

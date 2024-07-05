@@ -1,3 +1,4 @@
+import { X } from "lucide-react";
 import * as React from "react";
 
 const StartShipment = ({ startModal, setStartModal, startShipment }: any) => {
@@ -17,18 +18,18 @@ const StartShipment = ({ startModal, setStartModal, startShipment }: any) => {
       ></div>
 
       <div className="flex items-center min-h-screen px-4 py-8">
-        <div className="relative w-full max-w-lg p-4 mx-auto bg-white rounded-md shadow-lg">
+        <div className="relative w-full max-w-lg p-4 mx-auto bg-black rounded-md shadow-lg">
           <div className="flex justify-end">
             <button
-              className="p-2 text-gray-400 rounded-md hover:bg-gray-100"
+              className="p-2 text-gray-400 rounded-md hover:bg-gray-800"
               onClick={() => setStartModal(false)}
             >
-              start
+              <X className="text-white" />
             </button>
           </div>
 
           <div className="max-w-sm mx-auto py-3 space-y-3 text-center">
-            <h4 className="text-lg font-medium text-gray-400">
+            <h4 className="text-3xl font-bold text-gray-100">
               Start the shipping
             </h4>
 
@@ -40,7 +41,7 @@ const StartShipment = ({ startModal, setStartModal, startShipment }: any) => {
                 <input
                   type="text"
                   placeholder="Receiver"
-                  className="w-full pl-5 pr-3 h-9 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                  className="w-full pl-5 pr-3 h-9 text-gray-500 bg-transparent outline-none border focus:border-indigo-300 shadow-sm rounded-lg"
                   onChange={(e) =>
                     setGetProduct({
                       ...getProduct,
@@ -53,8 +54,8 @@ const StartShipment = ({ startModal, setStartModal, startShipment }: any) => {
               <div className="relative mt-3 px-6">
                 <input
                   type="text"
-                  placeholder="index"
-                  className="w-full pl-5 pr-3 h-9 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                  placeholder="Index"
+                  className="w-full pl-5 pr-3 h-9 text-gray-500 bg-transparent outline-none border focus:border-indigo-300 shadow-sm rounded-lg"
                   onChange={(e) =>
                     setGetProduct({
                       ...getProduct,
