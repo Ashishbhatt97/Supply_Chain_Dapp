@@ -85,7 +85,7 @@ const GetShipment = ({ getModal, setGetModal, getShipment }: any) => {
 
               {singleShipmentData == undefined ? null : (
                 <>
-                  <div className="text-left">
+                  <div className="text-left text-white">
                     <p>Sender : {singleShipmentData.sender.slice(0, 25)}...</p>
                     <p>
                       Receiver : {singleShipmentData.receiver.slice(0, 25)}...

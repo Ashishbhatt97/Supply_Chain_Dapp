@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export default function Component() {
   return (
-    <footer className="bg-muted py-12">
-      <div className="container mx-auto grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 pl-16">
+    <footer className="bg-muted py-12 mt-12">
+      <div className="container mx-auto grid grid-cols-1 gap-8 700:grid-cols-2 1024:grid-cols-4 pl-16">
         <div className="flex flex-col items-start gap-4">
           <Link href="#" className="flex items-center gap-2" prefetch={false}>
             <Package className="h-6 w-6" />

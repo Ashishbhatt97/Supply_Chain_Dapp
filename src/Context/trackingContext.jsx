@@ -56,7 +56,6 @@ export const TrackingProvider = ({ children }) => {
       const accounts = await ethereum.request({
         method: "eth_requestAccounts",
       });
-
       if (accounts.length) {
         setCurrentUser(accounts[0]);
       } else {
@@ -119,16 +118,13 @@ export const TrackingProvider = ({ children }) => {
 
   const getShipmentCount = useCallback(async () => {
     try {
-      if (!window.ethereum) return "Install Metamask";
+      const provider = initializeProvider();
+      if (!provider) return;
 
-      const accounts = await window.ethereum.request({
-        method: "eth_requestAccounts",
-      });
-
-      const provider = new ethers.providers.JsonRpcProvider();
       const contract = fetchContract(provider);
-      const shipmentCount = await contract.getShipmentCount(accounts[0]);
-      return shipmentCount.toNumber();
+      const user = provider.getSigner().getAddress();
+      const shipmentCount = await contract.getShipmentsCount(user);
+      return Number(shipmentCount);
     } catch (error) {
       console.error("Error getting shipment count:", error);
     }

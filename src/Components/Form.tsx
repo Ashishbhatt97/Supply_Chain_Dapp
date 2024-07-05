@@ -42,7 +42,7 @@ const Form = ({
           </div>
 
           <div className="max-w-sm pl-6 py-1 space-y-3">
-            <h4 className="text-xl font-medium text-gray-300">
+            <h4 className="text-xl font-bold text-gray-300">
               Track Shipment, Create Shipment
             </h4>
           </div>
