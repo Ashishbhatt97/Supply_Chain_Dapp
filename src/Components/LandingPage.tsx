@@ -1,9 +1,7 @@
-import Link from "next/link";
-import { Avatar, AvatarImage, AvatarFallback } from "@/Components/ui/avatar";
-import { Button } from "@/Components/ui/button";
 import Image from "next/image";
-import heroImg from "../Components/assets/heroimages.avif";
+import Link from "next/link";
 import { JSX, SVGProps } from "react";
+import heroImg from "../Components/assets/heroimages.avif";
 import Navbar from "./NavBar";
 
 export default function LandingPage({ ContactRef, PricingRef, HomeRef }: any) {
@@ -124,10 +122,9 @@ export default function LandingPage({ ContactRef, PricingRef, HomeRef }: any) {
                 <div className="flex flex-col justify-center space-y-4">
                   <div className="grid gap-1">
                     <div className="flex items-center gap-2">
-                      <Avatar>
-                        <AvatarImage src="/placeholder-user.jpg" />
-                        <AvatarFallback>JD</AvatarFallback>
-                      </Avatar>
+                      <div className="w-[40px] flex items-center justify-center h-[40px] rounded-full bg-gray-200">
+                        <div>JD</div>
+                      </div>
                       <div>
                         <h4 className="text-lg font-bold">John Doe</h4>
                         <p className="text-sm text-muted-foreground">
@@ -146,10 +143,9 @@ export default function LandingPage({ ContactRef, PricingRef, HomeRef }: any) {
                 <div className="flex flex-col justify-center space-y-4">
                   <div className="grid gap-1">
                     <div className="flex items-center gap-2">
-                      <Avatar>
-                        <AvatarImage src="/placeholder-user.jpg" />
-                        <AvatarFallback>JD</AvatarFallback>
-                      </Avatar>
+                      <div className="w-[40px] flex items-center justify-center h-[40px] rounded-full bg-gray-200">
+                        <div>JS</div>
+                      </div>
                       <div>
                         <h4 className="text-lg font-bold">Jane Smith</h4>
                         <p className="text-sm text-muted-foreground">
@@ -213,7 +209,7 @@ export default function LandingPage({ ContactRef, PricingRef, HomeRef }: any) {
                       </li>
                     </ul>
                   </div>
-                  <Button className="mt-6">Get Started</Button>
+                  <button className="mt-6">Get Started</button>
                 </div>
                 <div className="flex flex-col justify-between rounded-lg border bg-background p-6 shadow-sm">
                   <div className="space-y-4">
@@ -243,7 +239,7 @@ export default function LandingPage({ ContactRef, PricingRef, HomeRef }: any) {
                       </li>
                     </ul>
                   </div>
-                  <Button className="mt-6">Get Started</Button>
+                  <button className="mt-6">Get Started</button>
                 </div>
                 <div className="flex flex-col justify-between rounded-lg border bg-background p-6 shadow-sm">
                   <div className="space-y-4">
@@ -277,7 +273,7 @@ export default function LandingPage({ ContactRef, PricingRef, HomeRef }: any) {
                       </li>
                     </ul>
                   </div>
-                  <Button className="mt-6">Get Started</Button>
+                  <button className="mt-6">Get Started</button>
                 </div>
               </div>
             </div>

@@ -19,8 +19,6 @@ const Navbar = ({ ContactRef, ServicesRef, PricingRef }: any) => {
     setPathname(currentPathname);
   }, [currentPathname]);
 
-  console.log(ContactRef, ServicesRef, PricingRef);
-
   const scrollToSection = (href: string) => {
     if (href.startsWith("#")) {
       if (href.match("#Services")) {
