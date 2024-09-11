@@ -95,7 +95,7 @@ const Table: React.FC<TableProps> = ({
                       {shipment.price}
                     </td>
                     <td className="px-6 py-4 font-medium whitespace-nowrap">
-                      {shipment.deliveryTime}
+                      {convertTime(shipment.deliveryTime)}
                     </td>
                     <td className="px-6 py-4 font-medium whitespace-nowrap">
                       {shipment.isPaid ? "Completed" : "Not Complete"}

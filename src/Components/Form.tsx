@@ -53,13 +53,15 @@ const Form = ({
 
           <form
             onSubmit={(e) => e.preventDefault()}
-            className="flex flex-col  gap-3"
+            className="flex flex-col gap-3"
           >
             <div className="relative mt-3 px-6">
+              <label className="text-white/[0.5] text-sm pl-2">
+                Reciever Address
+              </label>
               <input
                 type="text"
-                placeholder="Receiver"
-                className="w-full pl-5 pr-3 h-9 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                className="w-full pl-5 pr-3 h-9 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg border-gray-700"
                 onChange={(e) =>
                   setShipment({
                     ...shipment,
@@ -68,11 +70,13 @@ const Form = ({
                 }
               />
             </div>
-            <div className="relative mt-3 px-6">
+            <div className="relative px-6">
+              <label className="text-white/[0.5] text-sm mt-3 pl-2">
+                Pick Up Time
+              </label>
               <input
                 type="date"
-                placeholder="pickupTime"
-                className="w-full pl-5 pr-3 h-9 text-gray-500 bg-black placeholder:bg-white outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                className="w-full pl-5 pr-3 h-9 text-gray-500 bg-black placeholder:bg-white outline-none border focus:border-indigo-600 shadow-sm rounded-lg border-gray-700"
                 onChange={(e) =>
                   setShipment({
                     ...shipment,
@@ -81,11 +85,13 @@ const Form = ({
                 }
               />
             </div>
-            <div className="relative mt-3 px-6">
+            <div className="relative px-6">
+              <label className="text-white/[0.5] text-sm pl-2">
+                Total Distance
+              </label>
               <input
                 type="number"
-                placeholder="distance"
-                className="w-full pl-5 pr-3 h-9 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                className="w-full pl-5 pr-3 h-9 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg border-gray-700"
                 onChange={(e) =>
                   setShipment({
                     ...shipment,
@@ -94,11 +100,13 @@ const Form = ({
                 }
               />
             </div>
-            <div className="relative mt-3 px-6">
+            <div className="relative px-6">
+              <label className="text-white/[0.5] text-sm mt-3 pl-2">
+                Price{" "}
+              </label>
               <input
                 type="number"
-                placeholder="price"
-                className="w-full pl-5 pr-3 h-9 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                className="w-full pl-5 pr-3 h-9 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg border-gray-700"
                 onChange={(e) =>
                   setShipment({
                     ...shipment,
@@ -111,7 +119,7 @@ const Form = ({
               <button
                 onClick={() => createItem()}
                 className="block w-full mt-3
-              py-3 font-medium text-sm text-center text-white bg-gray-800 rounded-lg hover:bg-gray-600 "
+              py-3 font-medium text-sm text-center text-white bg-gray-800 rounded-lg border-gray-700 hover:bg-gray-600 "
               >
                 Create Shipment
               </button>

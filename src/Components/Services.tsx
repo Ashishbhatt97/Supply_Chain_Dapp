@@ -7,21 +7,21 @@ const Services = ({
   ServicesRef,
 }: any) => {
   const team = [
+    "USER PROFILE",
     "GET SHIPMENT",
     "START SHIPMENT",
-    "USER PROFILE",
     "COMPLETE SHIPMENT",
   ];
 
   const openModalBox = (text: number) => {
     if (text === 1) {
-      setCompleteModal(true);
+      setOpenProfile(true);
     } else if (text === 2) {
       setGetModal(true);
     } else if (text === 3) {
       setStartModal(true);
     } else if (text === 4) {
-      setOpenProfile(true);
+      setCompleteModal(true);
     }
   };
 

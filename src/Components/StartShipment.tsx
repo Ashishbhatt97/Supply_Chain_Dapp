@@ -36,10 +36,12 @@ const StartShipment = ({ startModal, setStartModal, startShipment }: any) => {
               onSubmit={(e) => e.preventDefault()}
               className="flex flex-col  gap-3"
             >
-              <div className="relative mt-3 px-6">
+              <div className="text-left mt-3 px-6">
+                <label className="text-white/[0.5] text-sm pl-2">
+                  Receiver Address
+                </label>
                 <input
                   type="text"
-                  placeholder="Receiver"
                   className="w-full pl-5 pr-3 h-9 text-gray-500 bg-transparent outline-none border focus:border-indigo-300 shadow-sm rounded-lg"
                   onChange={(e) =>
                     setGetProduct({
@@ -50,10 +52,12 @@ const StartShipment = ({ startModal, setStartModal, startShipment }: any) => {
                 />
               </div>
 
-              <div className="relative mt-3 px-6">
+              <div className="text-left mt-3 px-6">
+                <label className="text-white/[0.5] text-sm pl-2">
+                  Shipment Id
+                </label>
                 <input
                   type="text"
-                  placeholder="Index"
                   className="w-full pl-5 pr-3 h-9 text-gray-500 bg-transparent outline-none border focus:border-indigo-300 shadow-sm rounded-lg"
                   onChange={(e) =>
                     setGetProduct({

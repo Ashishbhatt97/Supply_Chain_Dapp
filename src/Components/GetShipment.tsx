@@ -64,12 +64,14 @@ const GetShipment = ({ getModal, setGetModal, getShipment }: any) => {
 
               <form
                 onSubmit={(e) => e.preventDefault()}
-                className="flex flex-col  gap-3"
+                className="flex flex-col gap-3"
               >
-                <div className="relative mt-3">
+                <div className="flex flex-col text-left mt-3">
+                  <label className="text-white/[0.5] text-sm mb-1 pl-2">
+                    Shipment Id
+                  </label>
                   <input
                     type="number"
-                    placeholder="Id"
                     className="w-full pl-5 pr-3 h-9 text-gray-500 bg-transparent outline-none border focus:border-white/60 shadow-sm rounded-lg"
                     onChange={(e) => setIndex(Number(e.target.value))}
                   />
