@@ -21,13 +21,11 @@ const Table: React.FC<TableProps> = ({
   allShipmentData,
 }) => {
   const convertTime = (time: number) => {
-    const newTime = new Date().getTime();
-
     const dateTime = new Intl.DateTimeFormat("en-US", {
       year: "numeric",
       month: "2-digit",
       day: "2-digit",
-    }).format(newTime);
+    }).format(time);
 
     return dateTime;
   };

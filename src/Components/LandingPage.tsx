@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { JSX, SVGProps } from "react";
-import heroImg from "../Components/assets/heroimages.avif";
+import heroImg from "../Components/Assets/heroImg.jpeg";
 import Navbar from "./NavBar";
 
 export default function LandingPage({ ContactRef, PricingRef, HomeRef }: any) {
@@ -43,8 +43,8 @@ export default function LandingPage({ ContactRef, PricingRef, HomeRef }: any) {
                 </div>
                 <Image
                   src={heroImg}
-                  width="550"
-                  height="550"
+                  width="700"
+                  height="1000"
                   alt="Hero"
                   className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full 1024:order-last 1024:aspect-square"
                 />
